@@ -13,5 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         //Call Roles seeder class to populate Roles table with user roles
         $this->call(RolesTableSeeder::class);
+
+        //Call user seeder class to populate Administrators and dummy users
+        $this->call(UsersTableSeeder::class); 
     }
 }
