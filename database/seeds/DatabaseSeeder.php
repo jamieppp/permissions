@@ -11,6 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        //Call Roles seeder class to populate Roles table with user roles
+        $this->call(RolesTableSeeder::class);
+
+        //Call user seeder class to populate Administrators and dummy users
+        $this->call(UsersTableSeeder::class); 
     }
 }
