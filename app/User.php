@@ -13,9 +13,11 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var array
+     *
+     * Adding role_id to fillable array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'role_id', 'name', 'email', 'password',
     ];
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -56,16 +57,28 @@ class RegisterController extends Controller
 
     /**
      * Create a new user instance after a valid registration.
-     *
+     * Add Subscriber as default user role when registering
      * @param  array  $data
      * @return User
      */
     protected function create(array $data)
     {
         return User::create([
+            'role_id' => $this->getRoleId("Subscriber"),
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Function to retrieve role title from id
+     *
+     */
+
+    protected function getRoleId($title)
+    {
+        $result = Role::where("title", $title)->first();
+        return $result->id;
     }
 }
